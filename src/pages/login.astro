@@ -1,0 +1,25 @@
+---
+import { LoginForm } from "../components/LoginForm";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+    <section class="w-screen h-screen flex items-center justify-center bg-gradient-to-tl from-[#1500F7] via-[#6D02C6] to-[#CB0492]">
+        <LoginForm client:load />
+    </section>
+</Layout>
+
+<style>
+    .show {
+        animation: show backwards  .6s ease-in-out;
+    }
+
+    @keyframes show {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+</style>
