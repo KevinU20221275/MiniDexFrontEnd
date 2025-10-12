@@ -1,13 +1,21 @@
 ---
 import { LoginForm } from "../components/LoginForm";
-import Layout from "../layouts/Layout.astro";
+import '../styles/global.css'
 ---
-
-<Layout>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiniDex | Login</title>
+</head>
+<body>
     <section class="w-screen h-screen flex items-center justify-center bg-gradient-to-tl from-[#1500F7] via-[#6D02C6] to-[#CB0492]">
         <LoginForm client:load />
     </section>
-</Layout>
+</body>
+</html>
+
 
 <style>
     .show {
