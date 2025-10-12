@@ -1,0 +1,13 @@
+---
+import { getPokedex } from "../../services/pokedexService";
+import Layout from "../../layouts/Layout.astro";
+import {PokedexContainer} from "../../components/PokedexContainer"
+const token  = Astro.locals.token
+const pokemons = await getPokedex(token || "")
+---
+
+<Layout title="MiniDex | Mi Pokedex">
+    <h2 class="font-bold text-2xl text-center text-white mt-4">Mi Pokédex</h2>
+
+    <PokedexContainer client:load pokemonList={pokemons} />
+</Layout>
