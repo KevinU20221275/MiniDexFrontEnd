@@ -6,7 +6,7 @@ export const onRequest: MiddlewareHandler = async (context, next) => {
     const pathname = context.url.pathname
 
     // permite rutas publicas
-    if (pathname.startsWith("/login") || pathname.startsWith("/api/login") || pathname.startsWith("/api/register") ){
+    if (pathname.startsWith("/login") || pathname.startsWith("/api/auth/login") || pathname.startsWith("/api/auth/register") ){
         return next()
     }
 
