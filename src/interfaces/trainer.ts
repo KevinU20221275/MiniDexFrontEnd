@@ -1,10 +1,10 @@
-import type { Pokemon } from "./pokemon";
+import type { DailyPackStatus } from "./dailyPackStatus";
 
 export interface Trainer {
-    id: string;
     name: string;
     username: string;
     coins: number;
     level: number;
-    pokemons: Pokemon[];
+    xp: number
+    dailyPackStatus : DailyPackStatus
 }
