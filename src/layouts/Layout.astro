@@ -1,8 +1,9 @@
 ---
 import { ClientRouter } from "astro:transitions";
 const {title} = Astro.props
-import '../styles/global.css'
-import Header from "../components/Header.astro";
+import '@/styles/global.css'
+import Header from "@/components/Header.astro";
+import { GlobalAlert } from "@/components/ui/GlobalAlert";
 ---
 
 <!doctype html>
@@ -10,71 +11,16 @@ import Header from "../components/Header.astro";
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/svg+xml" href="/pokeball.png" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 		<ClientRouter fallback="none" />
 	</head>
-	<body class="bg-gradient-to-tl from-[#1500F7] via-[#6D02C6] to-[#CB0492] relative bg-no-repeat bg-fixed">
+	<body class="bg-gradient-to-tl from-[#1500F7] via-[#6D02C6] to-[#CB0492] relative bg-no-repeat bg-fixed min-h-full">
 		<Header/>
-		<div class="max-w-7xl mx-auto min-h-full">
+		<div class="max-w-7xl mx-auto">
 			<slot />
 		</div>
+		<GlobalAlert client:load />
 	</body>
 </html>
-
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
-
-<style is:global>
-
-	@keyframes bounce-pulse {
-		0% {
-			transform: translateY(0);
-		}
-		50% {
-			transform: translateY(-10px);
-		} 
-		100% {
-			transform: translateY(0);
-		}
-	}
-
-	.appear {
-		animation:appear .2s ease-in-out forwards;
-	}
-
-
-	@keyframes appear {
-		from {
-			opacity: 0;
-		} to {
-			opacity:1;
-		}
-	}
-
-
-	.custom-pulse-animation {
-		animation: bounce-pulse 2s ease-in-out infinite;
-	}
-
-	.show-up {
-		animation: show-up 12s ease-in-out forwards;
-	}
-
-	@keyframes show-up {
-		0 {
-			scale: 0;
-			opacity: 0;
-		} 100 {
-			scale: 1;
-			opacity: 1;
-		}
-	}
-</style>
