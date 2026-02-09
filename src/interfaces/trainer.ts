@@ -5,6 +5,8 @@ export interface Trainer {
     username: string;
     coins: number;
     level: number;
-    xp: number
+    xp: number;
+    wins: number
+    loses: number
     dailyPackStatus : DailyPackStatus
 }
