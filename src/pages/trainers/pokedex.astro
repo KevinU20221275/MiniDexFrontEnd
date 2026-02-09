@@ -1,13 +1,45 @@
 ---
-import { getPokedex } from "../../services/pokedexService";
-import Layout from "../../layouts/Layout.astro";
-import {PokedexContainer} from "../../components/PokedexContainer"
-const token  = Astro.locals.token
-const pokemons = await getPokedex(token || "")
+import Layout from "@/layouts/Layout.astro";
+import {PokedexContainer} from "@/features/pokedex/components/PokedexContainer"
+import { PokemonDetails } from "@/features/pokedex/components/PokemonDetails";
+import {TeamPokemon} from "@/features/pokedex/components/TeamPokemon"
+import type {Pokedex} from "@/interfaces/pokedex"
+import { getMyPokedex } from "@/server/services/pokedex.service";
+import type { Pokemon } from "@/interfaces/pokemon";
+
+if (!Astro.locals.token){
+    return Astro.redirect("/login")
+}
+
+const res = await getMyPokedex(Astro.locals.token)
+
+const pokedex = res.pokedex as Pokemon[]
+const pokemonTeam = res.pokemonTeam as Pokemon[]
 ---
 
 <Layout title="MiniDex | Mi Pokedex">
-    <h2 class="font-bold text-2xl text-center text-white mt-4">Mi Pokédex</h2>
+    <h2 class="font-bold text-2xl text-center text-white mt-4">My Pokédex</h2>
 
-    <PokedexContainer client:load pokemonList={pokemons} />
+    <div class="grid-pokedex-container px-2 gap-1.5">
+        <TeamPokemon client:load pokemonTeamFromRequest={pokemonTeam}  />
+        <PokedexContainer client:load pokemonList={pokedex} />
+        <PokemonDetails client:load/>
+    </div>
+    <div class="flex justify-center p-2">
+        <a href="/trainers/battle" class="px-2 py-1 rounded bg-white/20 text-white">Go to Battle</a>
+    </div>
 </Layout>
+
+
+<style>
+    .grid-pokedex-container {
+        display: grid;
+        grid-template-areas: 
+        "team pokemonDetail"
+        "pokedex pokemonDetail"
+        ;
+
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto 1fr;
+    }
+</style>
