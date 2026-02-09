@@ -1,15 +1,14 @@
 import { handleApiError } from "@/server/errors/handleApiError";
-import { updateTrainerData } from "@/server/services/trainer.service";
-import type { UpdateNameAndTrainerUsernameRequest } from "@/server/types/trainer.types";
+import { register } from "@/server/services/auth.service";
+import type { RegisterRequest } from "@/server/types/auth.types";
 import type { APIRoute } from "astro";
 
-export const PUT:APIRoute = async({locals, request, cookies}) => {
+export const POST:APIRoute = async ({request, cookies}) => {
     try {
-        const body = (await request.json() as UpdateNameAndTrainerUsernameRequest)
+        const body = (await request.json() as RegisterRequest)
 
-        const data = await updateTrainerData(locals.token!, body)
+        const data = await register(body)
 
-        // Guarda el nuevo token en la cookie
         cookies.set("token", data.token, {
             path: "/",
             httpOnly: true,
