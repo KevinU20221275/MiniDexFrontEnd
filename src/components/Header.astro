@@ -1,26 +1,29 @@
 <header class="bg-white/20 flex justify-between items-center px-10 py-4 text-white">
-	<p>Logo</p>
+	<a href="/" class="cursor-pointer">
+		<img src="/pokeball.webp" alt="pokeball img that redirect to index" title="pokeball" class="w-6">
+	</a>
 	<nav>
 		<ul class="flex gap-2">
             <li>
 				<a href="/" class="hover:bg-zinc-200/30 p-2 rounded-sm transition-all">Home</a>
 			</li>
 			<li>
-				<a href="/trainers/pokedex" class="hover:bg-zinc-200/30 p-2 rounded-sm transition-all">Mi Pokedex</a>
+				<a href="/trainers/pokedex" class="hover:bg-zinc-200/30 p-2 rounded-sm transition-all">Pokedex</a>
 			</li>
 			<li>
-				<a href="/store/store" class="hover:bg-zinc-200/30 p-2 rounded-sm transition-all">Tienda</a>
+				<a href="/shop/pokeShop" class="hover:bg-zinc-200/30 p-2 rounded-sm transition-all">Shop</a>
 			</li>
 			<li>
-				<a href="/trainers/me" class="hover:bg-zinc-200/30 p-2 rounded-sm transition-all">Perfil</a>
+				<a href="/trainers/me" class="hover:bg-zinc-200/30 p-2 rounded-sm transition-all">Profile</a>
 			</li>
 			<li>
-				<form action="/api/logout" method="POST" class="flex p-0 m-0">
+				<form action="/api/auth/logout" method="POST" class="flex p-0 m-0">
 					<button
 					type="submit"
 					class="hover:bg-zinc-200/30 px-2  rounded-sm transition-all cursor-pointer"
+					title="Log out from your account"
 					>
-					Cerrar sesión
+					Log out
 					</button>
 				</form>
 			</li>
