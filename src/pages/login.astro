@@ -1,6 +1,7 @@
 ---
-import { LoginForm } from "../components/LoginForm";
-import '../styles/global.css'
+import { GlobalAlert } from "@/components/ui/GlobalAlert";
+import { LoginForm } from "@/features/auth/components/LoginForm";
+import '@/styles/global.css'
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -10,8 +11,9 @@ import '../styles/global.css'
     <title>MiniDex | Login</title>
 </head>
 <body>
-    <section class="w-screen h-screen flex items-center justify-center bg-gradient-to-tl from-[#1500F7] via-[#6D02C6] to-[#CB0492]">
+    <section class="w-screen h-screen bg-fixed relative flex items-center justify-center bg-gradient-to-tl from-[#1500F7] via-[#6D02C6] to-[#CB0492]">
         <LoginForm client:load />
+        <GlobalAlert client:load />
     </section>
 </body>
 </html>
