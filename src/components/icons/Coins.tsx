@@ -1,4 +1,4 @@
-export function Coins() {
+export function Coins({customStyle}:{customStyle?:string}) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10,7 +10,7 @@ export function Coins() {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="icon icon-tabler icons-tabler-outline icon-tabler-coins"
+      className={`icon icon-tabler icons-tabler-outline icon-tabler-coins ${customStyle}`}
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M9 14c0 1.657 2.686 3 6 3s6 -1.343 6 -3s-2.686 -3 -6 -3s-6 1.343 -6 3z" />
